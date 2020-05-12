@@ -1,9 +1,10 @@
-class User():
-    def sign_in(self):
-        print('logged in')
+class User(object):
+    def __init__(self, email):
+        self.email = email
 
 class Wizard(User):
-    def __init__(self, name, power):
+    def __init__(self, name, power, email):
+        super().__init__(email)
         self.name = name
         self.power = power
 
@@ -18,7 +19,23 @@ class Archer(User):
     def attack(self):
         print(f'attacking with arrows: arrows left-{self.num_arrows}')
 
-wizard1 = Wizard('Merlin', 50)
-archer1 = Archer('Robin', 100)
-wizard1.attack()
-archer1.attack()
+wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
+archer1 = Archer('Robin', 30)
+
+# isinstance() is a built in function to check ig sn object is an instance of a class
+print(isinstance(wizard1, User))
+
+print(wizard1.email)
+
+# Polymorphism - Ability to redefine/modify methods in classes
+def player_attack(char):
+    char.attack()
+
+player_attack(wizard1)
+player_attack(archer1)
+
+for char in [wizard1, archer1]:
+    char.attack()
+
+#Prints a list of all the available methods for the class
+print(dir(wizard1))
