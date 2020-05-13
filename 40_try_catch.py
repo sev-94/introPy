@@ -10,7 +10,7 @@ while True:
         print('please enter a number')
     else:
         print('thank you')
-        break
+        break 
 
 def sum(num1, num2):
     try:
